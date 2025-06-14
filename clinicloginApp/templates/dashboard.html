@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome, {{ user.first_name }} 👋</h2>
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Profile Type: {{ user.get_profile_type_display }}</p>
+<p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+{% if user.profile_picture %}
+    <img src="{{ user.profile_picture.url }}" width="150" height="150" class="img-thumbnail mt-2">
+{% endif %}
+{% endblock %}

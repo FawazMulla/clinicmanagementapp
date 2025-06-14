@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row text-center">
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h3>🧑‍⚕️ Doctor</h3>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3">
+            <h3>🤒 Patient</h3>
+            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
