@@ -1,18 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row text-center">
-    <div class="col-md-6">
-        <div class="card p-3">
-            <h3>🧑‍⚕️ Doctor</h3>
-            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
-            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+<div class="container py-5">
+
+
+    <p class="lead text-center text-muted mb-5">
+        Our Clinic System is a platform for doctors and patients to securely interact. 
+        Doctors can manage profiles, and patients can register, login, and view their dashboard. 
+        Your health, our priority.
+    </p>
+
+    <div class="row justify-content-center">
+        <!-- Doctor Card -->
+        <div class="col-md-5 mb-4">
+            <div class="card text-center shadow-lg p-4 h-100">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">👨‍⚕️ Doctor</h4>
+                    <p class="text-muted">Register or login to manage your doctor dashboard and connect with patients.</p>
+                    <a href="{% url 'doctor_signup' %}" class="btn btn-success mb-2 w-100">✍️ Doctor Signup</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-success w-100">🔐 Doctor Login</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card p-3">
-            <h3>🤒 Patient</h3>
-            <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
-            <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+
+        <!-- Patient Card -->
+        <div class="col-md-5 mb-4">
+            <div class="card text-center shadow-lg p-4 h-100">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">🧑‍⚕️ Patient</h4>
+                    <p class="text-muted">Create your patient profile or log in to access your personal dashboard.</p>
+                    <a href="{% url 'patient_signup' %}" class="btn btn-primary mb-2 w-100">✍️ Patient Signup</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary w-100">🔐 Patient Login</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
