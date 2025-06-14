@@ -1,10 +1,55 @@
 {% extends 'base.html' %}
-{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <h2>Signup</h2>
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
-    {{ form|crispy }}
+    
+    <!-- Render all fields except passwords -->
+    {% for field in form %}
+        {% if field.name != 'password1' and field.name != 'password2' %}
+            <div class="mb-3">
+                {{ field|as_crispy_field }}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <!-- Password fields with ticks -->
+    <div class="mb-3">
+        <label for="id_password1">Password</label> <span id="password1_check"></span><br>
+        {{ form.password1 }}
+    </div>
+    <div class="mb-3">
+        <label for="id_password2">Confirm Password</label> <span id="password2_check"></span><br>
+        {{ form.password2 }}
+    </div>
+
     <button class="btn btn-success" type="submit">Register</button>
 </form>
+
+<script>
+  const password1 = document.getElementById('id_password1');
+  const password2 = document.getElementById('id_password2');
+  const password1Check = document.getElementById('password1_check');
+  const password2Check = document.getElementById('password2_check');
+
+  function checkPasswords() {
+    if (password1.value && password2.value) {
+      if (password1.value === password2.value) {
+        password1Check.textContent = '✅';
+        password2Check.textContent = '✅';
+      } else {
+        password1Check.textContent = '❌';
+        password2Check.textContent = '❌';
+      }
+    } else {
+      password1Check.textContent = '';
+      password2Check.textContent = '';
+    }
+  }
+
+  password1.addEventListener('input', checkPasswords);
+  password2.addEventListener('input', checkPasswords);
+</script>
 {% endblock %}
